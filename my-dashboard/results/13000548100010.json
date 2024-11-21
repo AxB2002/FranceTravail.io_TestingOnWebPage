@@ -1,0 +1,27 @@
+{
+  "hits": 1,
+  "items": [
+    {
+      "id": 12384661,
+      "siret": "13000548100010",
+      "company_name": "FRANCE TRAVAIL",
+      "office_name": "DIRECTION GENERALE",
+      "headcount_min": 1000,
+      "headcount_max": 1999,
+      "naf": "8413Z",
+      "naf_label": "Administration publique (tutelle) des activités économiques",
+      "location": {
+        "lat": 48.8778,
+        "lon": 2.40989
+      },
+      "city": "Paris",
+      "citycode": "75120",
+      "postcode": "75020",
+      "department": "Paris",
+      "region": "Île-de-France",
+      "department_number": "75",
+      "hiring_potential": 91.74451204525708,
+      "is_high_potential": true
+    }
+  ]
+}

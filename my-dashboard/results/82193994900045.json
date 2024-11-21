@@ -1,0 +1,27 @@
+{
+  "hits": 1,
+  "items": [
+    {
+      "id": 7604357,
+      "siret": "82193994900045",
+      "company_name": "DELIA TECHNOLOGIES",
+      "office_name": "",
+      "headcount_min": 0,
+      "headcount_max": 0,
+      "naf": "6202A",
+      "naf_label": "Conseil en systèmes et logiciels informatiques",
+      "location": {
+        "lat": 47.2118,
+        "lon": -1.55147
+      },
+      "city": "Nantes",
+      "citycode": "44109",
+      "postcode": "44000",
+      "department": "Loire-Atlantique",
+      "region": "Pays de la Loire",
+      "department_number": "44",
+      "hiring_potential": 82.08359411863373,
+      "is_high_potential": true
+    }
+  ]
+}
