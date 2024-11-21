@@ -35,7 +35,7 @@ app.get("/api/recherche", async (req, res) => {
   siret = siret.replace(/\s+/g, ""); // Cela supprime tous les espaces du numéro de SIRET
 
   const apiUrl = `https://api.francetravail.io/partenaire/labonneboite/v2/potentielEmbauche?siret=${siret}`;
-  const apiKey = "O_mR-8CiIebeOm8EZww5AU92exg"; // Remplace par ta clé API
+  const apiKey = "lvqWMB0d-23DBW_IUqFGvJiCCIY"; // Remplace par ta clé API
 
   try {
     // Appel à l'API
