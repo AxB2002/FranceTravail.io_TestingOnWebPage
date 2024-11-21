@@ -1,0 +1,27 @@
+{
+  "hits": 1,
+  "items": [
+    {
+      "id": 11621010,
+      "siret": "39783638800017",
+      "company_name": "PARIS",
+      "office_name": "ETS PARIS",
+      "headcount_min": 10,
+      "headcount_max": 19,
+      "naf": "4621Z",
+      "naf_label": "Commerce de gros (commerce interentreprises) de céréales, de tabac non manufacturé, de semences et d'aliments pour le bétail",
+      "location": {
+        "lat": 50.127,
+        "lon": 3.6865
+      },
+      "city": "Landrecies",
+      "citycode": "59331",
+      "postcode": "59550",
+      "department": "Nord",
+      "region": "Hauts-de-France",
+      "department_number": "59",
+      "hiring_potential": 26.82305,
+      "is_high_potential": false
+    }
+  ]
+}

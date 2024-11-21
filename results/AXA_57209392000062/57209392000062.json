@@ -1,0 +1,27 @@
+{
+  "hits": 1,
+  "items": [
+    {
+      "id": 7466232,
+      "siret": "57209392000062",
+      "company_name": "AXA",
+      "office_name": "",
+      "headcount_min": 6,
+      "headcount_max": 9,
+      "naf": "6430Z",
+      "naf_label": "Fonds de placement et entités financières similaires",
+      "location": {
+        "lat": 48.8713,
+        "lon": 2.31363
+      },
+      "city": "Paris",
+      "citycode": "75108",
+      "postcode": "75008",
+      "department": "Paris",
+      "region": "Île-de-France",
+      "department_number": "75",
+      "hiring_potential": 26.82305,
+      "is_high_potential": false
+    }
+  ]
+}

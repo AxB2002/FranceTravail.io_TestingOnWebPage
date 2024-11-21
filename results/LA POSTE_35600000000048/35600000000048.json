@@ -1,0 +1,27 @@
+{
+  "hits": 1,
+  "items": [
+    {
+      "id": 1856510,
+      "siret": "35600000000048",
+      "company_name": "LA POSTE",
+      "office_name": "LA POSTE",
+      "headcount_min": 1000,
+      "headcount_max": 1999,
+      "naf": "5310Z",
+      "naf_label": "Activités de poste dans le cadre d'une obligation de service universel",
+      "location": {
+        "lat": 48.83,
+        "lon": 2.27569
+      },
+      "city": "Paris",
+      "citycode": "75115",
+      "postcode": "75015",
+      "department": "Paris",
+      "region": "Île-de-France",
+      "department_number": "75",
+      "hiring_potential": 100,
+      "is_high_potential": true
+    }
+  ]
+}

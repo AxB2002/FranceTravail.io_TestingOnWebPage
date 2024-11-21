@@ -1,0 +1,27 @@
+{
+  "hits": 1,
+  "items": [
+    {
+      "id": 10765731,
+      "siret": "41228073720375",
+      "company_name": "SNCF RESEAU",
+      "office_name": "",
+      "headcount_min": 500,
+      "headcount_max": 999,
+      "naf": "5221Z",
+      "naf_label": "Services auxiliaires des transports terrestres",
+      "location": {
+        "lat": 48.9205,
+        "lon": 2.35181
+      },
+      "city": "Saint-Denis",
+      "citycode": "93066",
+      "postcode": "93200",
+      "department": "Seine-Saint-Denis",
+      "region": "Île-de-France",
+      "department_number": "93",
+      "hiring_potential": 92.28800250768812,
+      "is_high_potential": true
+    }
+  ]
+}
