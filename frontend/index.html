@@ -3,17 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recherche Entreprises</title>
+    <title>Recherche d'entreprise par SIRET</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
-      <h1>Rechercher une entreprise par SIRET</h1>
-      <input type="text" id="siret" placeholder="Entrez le numéro de SIRET" />
-      <button id="searchBtn">Rechercher</button>
-
-      <div id="results"></div>
+      <h1>Recherche d'entreprise par SIRET</h1>
+      <div class="form-container">
+        <input type="text" id="siret" placeholder="Entrez le numéro de SIRET" />
+        <button id="search-btn">Rechercher</button>
+      </div>
+      <div id="results" class="results-container"></div>
     </div>
+
     <script src="index.js"></script>
   </body>
 </html>
