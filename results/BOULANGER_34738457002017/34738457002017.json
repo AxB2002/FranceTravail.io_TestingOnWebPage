@@ -1,0 +1,27 @@
+{
+  "hits": 1,
+  "items": [
+    {
+      "id": 8031343,
+      "siret": "34738457002017",
+      "company_name": "BOULANGER",
+      "office_name": "",
+      "headcount_min": 500,
+      "headcount_max": 999,
+      "naf": "4754Z",
+      "naf_label": "Commerce de détail d'appareils électroménagers en magasin spécialisé",
+      "location": {
+        "lat": 50.5847,
+        "lon": 3.09772
+      },
+      "city": "Lesquin",
+      "citycode": "59343",
+      "postcode": "59810",
+      "department": "Nord",
+      "region": "Hauts-de-France",
+      "department_number": "59",
+      "hiring_potential": 92.62834164029209,
+      "is_high_potential": true
+    }
+  ]
+}
