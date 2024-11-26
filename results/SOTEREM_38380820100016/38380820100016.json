@@ -1,0 +1,27 @@
+{
+  "hits": 1,
+  "items": [
+    {
+      "id": 2756171,
+      "siret": "38380820100016",
+      "company_name": "SOTEREM",
+      "office_name": "",
+      "headcount_min": 20,
+      "headcount_max": 49,
+      "naf": "2651B",
+      "naf_label": "Fabrication d'instrumentation scientifique et technique",
+      "location": {
+        "lat": 43.5128,
+        "lon": 1.5184
+      },
+      "city": "Castanet-Tolosan",
+      "citycode": "31113",
+      "postcode": "31320",
+      "department": "Haute-Garonne",
+      "region": "Occitanie",
+      "department_number": "31",
+      "hiring_potential": 84.06556998963167,
+      "is_high_potential": true
+    }
+  ]
+}
