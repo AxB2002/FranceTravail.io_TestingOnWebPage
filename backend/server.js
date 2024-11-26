@@ -24,18 +24,15 @@ app.use(limiter);
 
 // Point de terminaison pour rechercher une entreprise par SIRET
 app.get("/api/recherche", async (req, res) => {
-  let siret = req.query.siret; // Le numéro de SIRET passé comme paramètre
+  const siret = req.query.siret; // Le numéro de SIRET passé comme paramètre
 
   // Vérifier si le SIRET a bien été fourni
   if (!siret) {
     return res.status(400).json({ error: "Le numéro de SIRET est requis." });
   }
 
-  // Retirer les espaces du numéro de SIRET
-  siret = siret.replace(/\s+/g, ""); // Cela supprime tous les espaces du numéro de SIRET
-
   const apiUrl = `https://api.francetravail.io/partenaire/labonneboite/v2/potentielEmbauche?siret=${siret}`;
-  const apiKey = "lvqWMB0d-23DBW_IUqFGvJiCCIY"; // Remplace par ta clé API
+  const apiKey = "0jq80muJF2XqtzNeSlLOyOyRM3A";
 
   try {
     // Appel à l'API
