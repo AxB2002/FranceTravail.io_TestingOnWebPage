@@ -32,7 +32,7 @@ app.get("/api/recherche", async (req, res) => {
   }
 
   const apiUrl = `https://api.francetravail.io/partenaire/labonneboite/v2/potentielEmbauche?siret=${siret}`;
-  const apiKey = "_ce8WGfrJobh5sM0mID_17K9PoQ";
+  const apiKey = "AU9K1n-01m0lbDNYFJ4PXYp14_8";
 
   try {
     // Appel à l'API
