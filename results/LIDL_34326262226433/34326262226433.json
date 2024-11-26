@@ -1,0 +1,27 @@
+{
+  "hits": 1,
+  "items": [
+    {
+      "id": 15806609,
+      "siret": "34326262226433",
+      "company_name": "LIDL",
+      "office_name": "LIDL",
+      "headcount_min": 500,
+      "headcount_max": 999,
+      "naf": "7010Z",
+      "naf_label": "Activités des sièges sociaux",
+      "location": {
+        "lat": 48.7627,
+        "lon": 2.29081
+      },
+      "city": "Châtenay-Malabry",
+      "citycode": "92019",
+      "postcode": "92290",
+      "department": "Hauts-de-Seine",
+      "region": "Île-de-France",
+      "department_number": "92",
+      "hiring_potential": 26.82305,
+      "is_high_potential": false
+    }
+  ]
+}
