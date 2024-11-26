@@ -116,7 +116,7 @@ Each search generates a unique JSON file in a folder named:
 
 ```bash
 # Clone the repository
-git clone [https://github.com/AxB2002/FranceTravail.io_TestingOnWebPage.git]
+git clone https://github.com/AxB2002/FranceTravail.io_TestingOnWebPage.git
 
 # Install dependencies
 npm install
