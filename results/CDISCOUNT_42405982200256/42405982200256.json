@@ -1,0 +1,27 @@
+{
+  "hits": 1,
+  "items": [
+    {
+      "id": 12560095,
+      "siret": "42405982200256",
+      "company_name": "CDISCOUNT",
+      "office_name": "CDISCOUNT- CDISCOUNT.COM- CDISCOUNT",
+      "headcount_min": 500,
+      "headcount_max": 999,
+      "naf": "4791A",
+      "naf_label": "Vente à distance sur catalogue général",
+      "location": {
+        "lat": 44.8607,
+        "lon": -0.552792
+      },
+      "city": "Bordeaux",
+      "citycode": "33063",
+      "postcode": "33300",
+      "department": "Gironde",
+      "region": "Nouvelle-Aquitaine",
+      "department_number": "33",
+      "hiring_potential": 91.96148711411779,
+      "is_high_potential": true
+    }
+  ]
+}
