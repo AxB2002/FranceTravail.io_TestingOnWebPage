@@ -1,0 +1,27 @@
+{
+  "hits": 1,
+  "items": [
+    {
+      "id": 396234,
+      "siret": "69692054500170",
+      "company_name": "BOTTEGA VENETA FRANCE",
+      "office_name": "",
+      "headcount_min": 10,
+      "headcount_max": 19,
+      "naf": "4771Z",
+      "naf_label": "Commerce de détail d'habillement en magasin spécialisé",
+      "location": {
+        "lat": 48.8696,
+        "lon": 2.32238
+      },
+      "city": "Paris",
+      "citycode": "75108",
+      "postcode": "75008",
+      "department": "Paris",
+      "region": "Île-de-France",
+      "department_number": "75",
+      "hiring_potential": 84.76298639301561,
+      "is_high_potential": true
+    }
+  ]
+}
