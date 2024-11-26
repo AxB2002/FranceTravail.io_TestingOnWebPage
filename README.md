@@ -92,7 +92,7 @@ function displayResults(data) {
 
 Here is an example screenshot of the application displaying company data:
 
-![TestResults](/results/FRANCE%20TRAVAIL_13000548100010/image.png)
+![TestResults](/results/FRANCE%20TRAVAIL_13000548100010/imageFT.png)
 
 🔒 **Security and Limitations**
 
