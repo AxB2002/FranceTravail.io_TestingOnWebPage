@@ -1,7 +1,12 @@
-const express = require("express");
-const fetch = require("node-fetch");
-const path = require("path");
-const cors = require("cors");
+import express from "express";
+import fetch from "node-fetch";
+import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Variables et configuration
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;
@@ -14,7 +19,7 @@ const API_TOKEN = "cWpNrOpSvwjHvqwS_Ogqoq7JsF8";
 app.use(cors());
 app.use(express.json());
 
-// Servir les fichiers statiques du dossier frontend
+// Servir les fichiers statiques du frontend
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 // Route pour l'API
