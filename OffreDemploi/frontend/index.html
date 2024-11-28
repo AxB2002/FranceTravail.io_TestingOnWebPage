@@ -8,12 +8,22 @@
   </head>
   <body>
     <header>
-      <h1>Offres d'Emploi</h1>
+      <h1 class="main-title">Offres d'Emploi</h1>
     </header>
     <main>
-      <div id="job-list">
-        <p>Chargement des offres...</p>
-      </div>
+      <section>
+        <h2 class="section-title">Liste des Offres</h2>
+        <button id="load-jobs">Charger les Offres</button>
+        <div id="job-list">
+          <!-- Les résultats des offres seront affichés ici -->
+        </div>
+      </section>
+      <section id="report-section" style="display: none">
+        <h3>Rapport des Offres</h3>
+        <div id="report-content">
+          <!-- Le rapport des offres sera généré ici -->
+        </div>
+      </section>
     </main>
     <footer>
       <p>© 2024 France Travail - Tous droits réservés</p>
