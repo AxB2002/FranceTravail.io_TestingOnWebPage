@@ -11,11 +11,21 @@
       <!-- Bouton pour charger les offres -->
       <button id="load-jobs">Charger les offres</button>
 
+      <!-- Message de chargement -->
+      <div id="loading-message" style="display: none">
+        Recherche en cours...
+      </div>
+
       <!-- Liste des offres -->
       <div id="job-list"></div>
 
+      <!-- Section rapport -->
+      <div id="report-section" style="display: none">
+        <div id="report-content"></div>
+      </div>
+
       <!-- Overlay pour le pop-up -->
-      <div id="job-popup" class="job-popup">
+      <div id="job-popup" class="job-popup" style="display: none">
         <div class="job-popup-content" id="job-popup-content">
           <!-- Contenu dynamique du pop-up -->
           <button id="job-popup-close">Fermer</button>
