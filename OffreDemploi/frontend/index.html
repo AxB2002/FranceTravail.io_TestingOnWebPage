@@ -4,30 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Offres d'Emploi</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header>
-      <h1 class="main-title">Offres d'Emploi</h1>
-    </header>
-    <main>
-      <section>
-        <h2 class="section-title">Liste des Offres</h2>
-        <button id="load-jobs">Charger les Offres</button>
-        <div id="job-list">
-          <!-- Les résultats des offres seront affichés ici -->
-        </div>
-      </section>
-      <section id="report-section" style="display: none">
-        <h3>Rapport des Offres</h3>
-        <div id="report-content">
-          <!-- Le rapport des offres sera généré ici -->
-        </div>
-      </section>
-    </main>
-    <footer>
-      <p>© 2024 France Travail - Tous droits réservés</p>
-    </footer>
-    <script src="app.js"></script>
+    <div id="app">
+      <button id="load-jobs">Charger les offres</button>
+      <div id="job-list"></div>
+
+      <!-- Overlay pour le pop-up -->
+      <div id="overlay" class="overlay"></div>
+
+      <!-- Pop-up modale -->
+      <div id="popup" class="popup">
+        <span id="popup-close" class="close">&times;</span>
+        <h2 id="popup-title"></h2>
+        <p id="popup-description"></p>
+        <p><strong>Lieu:</strong> <span id="popup-location"></span></p>
+        <p>
+          <strong>Type de contrat:</strong> <span id="popup-contract"></span>
+        </p>
+      </div>
+    </div>
+    <script src="./app.js"></script>
   </body>
 </html>
