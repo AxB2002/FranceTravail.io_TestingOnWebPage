@@ -8,23 +8,21 @@
   </head>
   <body>
     <div id="app">
+      <!-- Bouton pour charger les offres -->
       <button id="load-jobs">Charger les offres</button>
+
+      <!-- Liste des offres -->
       <div id="job-list"></div>
 
       <!-- Overlay pour le pop-up -->
-      <div id="overlay" class="overlay"></div>
-
-      <!-- Pop-up modale -->
-      <div id="popup" class="popup">
-        <span id="popup-close" class="close">&times;</span>
-        <h2 id="popup-title"></h2>
-        <p id="popup-description"></p>
-        <p><strong>Lieu:</strong> <span id="popup-location"></span></p>
-        <p>
-          <strong>Type de contrat:</strong> <span id="popup-contract"></span>
-        </p>
+      <div id="job-popup" class="job-popup">
+        <div class="job-popup-content" id="job-popup-content">
+          <!-- Contenu dynamique du pop-up -->
+          <button id="job-popup-close">Fermer</button>
+        </div>
       </div>
     </div>
+
     <script src="./app.js"></script>
   </body>
 </html>

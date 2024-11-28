@@ -3,6 +3,7 @@ import fetch from "node-fetch";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
+import rateLimit from "express-rate-limit";
 
 // Variables et configuration
 const __filename = fileURLToPath(import.meta.url);
@@ -13,7 +14,17 @@ const PORT = 3000;
 
 const API_URL =
   "https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search";
-const API_TOKEN = "Wdv2ughzp-kAyRfpIObfKnea9Gs"; // Remplacer par votre token valide
+const API_TOKEN = "tPOAmLO17V2o4fJqfRT2oEKnPn4"; // Remplacer par votre token valide
+
+// Middleware pour limiter les appels à l'API
+const limiter = rateLimit({
+  windowMs: 1000, // 1 seconde
+  max: 10, // Limite à 10 requêtes par seconde
+  message: "Trop de requêtes envoyées, veuillez réessayer dans 1 seconde.",
+});
+
+// Utilisation du middleware de limitation
+app.use("/api/offres", limiter);
 
 // Middleware
 app.use(cors());

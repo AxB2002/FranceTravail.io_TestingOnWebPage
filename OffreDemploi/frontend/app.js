@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const jobList = document.getElementById("job-list");
   const reportSection = document.getElementById("report-section");
   const reportContent = document.getElementById("report-content");
+  const jobPopup = document.getElementById("job-popup");
+  const jobPopupContent = document.getElementById("job-popup-content");
+  const jobPopupClose = document.getElementById("job-popup-close");
 
   // Fonction pour charger les offres d'emploi
   async function loadJobs() {
@@ -31,18 +34,18 @@ document.addEventListener("DOMContentLoaded", function () {
         if (jobList) {
           jobList.innerHTML = "";
 
-          // Créer et afficher les offres d'emploi
+          // Créer et afficher les cartes avec les titres des offres d'emploi
           data.resultats.forEach((job) => {
-            const jobItem = document.createElement("div");
-            jobItem.classList.add("job-item");
-
-            jobItem.innerHTML = `
+            const jobCard = document.createElement("div");
+            jobCard.classList.add("job-card");
+            jobCard.innerHTML = `
                 <h2>${job.intitule}</h2>
-                <p>${job.description}</p>
-                <p><strong>Lieu:</strong> ${job.lieuTravail.libelle}</p>
-                <p><strong>Type de contrat:</strong> ${job.typeContratLibelle}</p>
               `;
-            jobList.appendChild(jobItem);
+
+            // Ajouter un événement de clic pour ouvrir le pop-up
+            jobCard.addEventListener("click", () => openJobPopup(job));
+
+            jobList.appendChild(jobCard);
           });
         }
 
@@ -71,8 +74,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Fonction pour ouvrir le pop-up avec le contenu de l'offre
+  function openJobPopup(job) {
+    if (jobPopup && jobPopupContent) {
+      jobPopup.style.display = "block"; // Afficher le pop-up
+      jobPopupContent.innerHTML = `
+          <h2>${job.intitule}</h2>
+          <p><strong>Description:</strong> ${job.description}</p>
+          <p><strong>Lieu:</strong> ${job.lieuTravail.libelle}</p>
+          <p><strong>Type de contrat:</strong> ${job.typeContratLibelle}</p>
+        `;
+    }
+  }
+
   // Ajouter un écouteur d'événements pour le bouton de chargement des offres
   if (loadJobsButton) {
     loadJobsButton.addEventListener("click", loadJobs);
+  }
+
+  // Fermer le pop-up lorsque l'utilisateur clique sur le bouton de fermeture
+  if (jobPopupClose) {
+    jobPopupClose.addEventListener("click", () => {
+      if (jobPopup) {
+        jobPopup.style.display = "none"; // Cacher le pop-up
+      }
+    });
   }
 });
