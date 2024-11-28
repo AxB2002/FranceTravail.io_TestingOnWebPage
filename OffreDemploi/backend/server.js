@@ -13,14 +13,14 @@ const app = express();
 const PORT = 3000;
 
 const API_URL =
-    "https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search";
+  "https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search";
 const API_TOKEN = "FKpXUAlwWQvKO3Zkd0jpMcf8Nxk"; // Remplacer par votre token valide
 
 // Middleware pour limiter les appels à l'API
 const limiter = rateLimit({
-    windowMs: 1000, // 1 seconde
-    max: 10, // Limite à 10 requêtes par seconde
-    message: "Trop de requêtes envoyées, veuillez réessayer dans 1 seconde.",
+  windowMs: 1000, // 1 seconde
+  max: 10, // Limite à 10 requêtes par seconde
+  message: "Trop de requêtes envoyées, veuillez réessayer dans 1 seconde.",
 });
 
 // Utilisation du middleware de limitation
@@ -35,25 +35,25 @@ app.use(express.static(path.join(__dirname, "../frontend")));
 
 // Route pour l'API
 app.get("/api/offres", async (req, res) => {
-    try {
+  try {
     // Log avant d'envoyer la requête à l'API
     console.log("Envoi de la requête à l'API...");
 
     const response = await fetch(API_URL, {
-        method: "GET",
-        headers: {
+      method: "GET",
+      headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${API_TOKEN}`,
-        },
+        Authorization: `Bearer ${API_TOKEN}`, // Token utilisé pour l'authentification
+      },
     });
 
     // Log de la réponse de l'API
     console.log("Réponse de l'API, code:", response.status);
 
     if (!response.ok) {
-        return res
+      return res
         .status(response.status)
-        .json({ error: "Erreur lors de l'appel API" });
+        .json({ error: `Erreur API (${response.statusText})` });
     }
 
     const data = await response.json();
@@ -62,24 +62,25 @@ app.get("/api/offres", async (req, res) => {
     console.log("Données reçues de l'API:", data);
 
     // Vérifier que les données contiennent bien des résultats
-    if (data && data.resultats) {
-      res.json(data); // Renvoie les résultats à l'utilisateur
+    if (data && data.resultats && data.resultats.length > 0) {
+      console.log(`${data.resultats.length} résultats trouvés.`);
+      res.json(data.resultats); // Renvoie uniquement les résultats à l'utilisateur
     } else {
-        console.log("Pas de résultats dans la réponse de l'API");
-        res.status(500).json({ error: "Pas de résultats disponibles" });
+      console.log("Pas de résultats dans la réponse de l'API");
+      res.status(404).json({ error: "Pas de résultats disponibles" });
     }
-    } catch (error) {
-    console.error("Erreur lors de la requête API:", error);
-    res.status(500).json({ error: "Erreur serveur" });
-    }
+  } catch (error) {
+    console.error("Erreur lors de la requête API:", error.message);
+    res.status(500).json({ error: "Erreur serveur interne" });
+  }
 });
 
 // Route pour toutes les autres requêtes : renvoyer l'index.html
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/index.html"));
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
 
 // Démarrer le serveur
 app.listen(PORT, () => {
-    console.log(`Serveur démarré sur http://localhost:${PORT}`);
+  console.log(`Serveur démarré sur http://localhost:${PORT}`);
 });
