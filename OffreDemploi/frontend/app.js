@@ -1,102 +1,149 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Cibler les éléments nécessaires une fois le DOM chargé
   const loadJobsButton = document.getElementById("load-jobs");
   const jobList = document.getElementById("job-list");
   const reportSection = document.getElementById("report-section");
   const reportContent = document.getElementById("report-content");
-  const jobPopup = document.getElementById("job-popup");
-  const jobPopupContent = document.getElementById("job-popup-content");
-  const jobPopupClose = document.getElementById("job-popup-close");
+  const loadingMessage = document.getElementById("loading-message");
 
   // Fonction pour charger les offres d'emploi
   async function loadJobs() {
     try {
-      // Afficher un message de chargement
-      if (jobList) {
-        jobList.innerHTML = "<p>Chargement des offres...</p>";
+      console.log("Chargement des offres lancé...");
+
+      // Afficher le message de chargement
+      if (loadingMessage) {
+        loadingMessage.style.display = "block";
+        loadingMessage.textContent = "Recherche en cours...";
       }
 
-      // Envoyer une requête fetch à votre serveur backend
+      // Vider la liste des emplois précédemment affichés
+      if (jobList) {
+        jobList.innerHTML = "";
+      }
+
+      // Envoi de la requête à l'API
       const response = await fetch("/api/offres");
 
-      // Vérification de la réponse du serveur
-      console.log("Réponse du serveur:", response.status);
+      console.log("Réponse du serveur : ", response.status);
 
+      // Vérification de la réponse
       if (!response.ok) {
         throw new Error("Erreur lors de la récupération des données");
       }
 
+      // Convertir la réponse en JSON
       const data = await response.json();
-      console.log("Données reçues du serveur:", data);
+      console.log("Données reçues de l'API : ", data);
 
-      if (data && data.resultats && data.resultats.length > 0) {
-        // Vider la liste avant d'afficher les offres
-        if (jobList) {
-          jobList.innerHTML = "";
+      // Masquer le message de chargement une fois les données reçues
+      if (loadingMessage) {
+        loadingMessage.style.display = "none";
+      }
 
-          // Créer et afficher les cartes avec les titres des offres d'emploi
-          data.resultats.forEach((job) => {
-            const jobCard = document.createElement("div");
-            jobCard.classList.add("job-card");
-            jobCard.innerHTML = `
-                <h2>${job.intitule}</h2>
-              `;
+      // Vérifier si des offres ont été retournées
+      if (data && data.offres && data.offres.length > 0) {
+        console.log("Offres trouvées : ", data.offres);
 
-            // Ajouter un événement de clic pour ouvrir le pop-up
-            jobCard.addEventListener("click", () => openJobPopup(job));
+        // Trier les offres par titre de mission
+        const sortedJobs = data.offres.map((job) => ({
+          mission: job.intitule || "Aucune mission", // Ajouter une valeur par défaut si mission est undefined
+          description: job.description || "Non disponible",
+          profil: job.profil || "Non précisé",
+          experience: job.experience || "Non précisé",
+          savoirFaire: job.savoirFaire || "Non précisé",
+          typeContrat: job.typeContrat || "Non précisé",
+          remuneration: job.remuneration || "Non précisé",
+          lieuTravail: job.lieuTravail || "Non précisé",
+          experienceLibelle: job.experienceLibelle || "Non précisé",
+          competences: job.competences || "Non précisé",
+          salaire: job.salaire || "Non précisé",
+          dureeTravailLibelle: job.dureeTravailLibelle || "Non précisé",
+          dureeTravailLibelleConverti:
+            job.dureeTravailLibelleConverti || "Non précisé",
+        }));
 
-            jobList.appendChild(jobCard);
-          });
-        }
+        sortedJobs.sort((a, b) => {
+          const missionA = a.mission.toLowerCase();
+          const missionB = b.mission.toLowerCase();
+          return missionA.localeCompare(missionB);
+        });
 
-        // Créer un rapport avec le nombre d'offres chargées
+        // Affichage des titres des offres
+        sortedJobs.forEach((job) => {
+          const jobCard = document.createElement("div");
+          jobCard.classList.add("job-card");
+          jobCard.innerHTML = `
+              <h2>${job.mission}</h2>
+            `;
+          // Ajouter un événement au clic pour afficher les détails
+          jobCard.addEventListener("click", () => openJobPopup(job));
+          jobList.appendChild(jobCard);
+        });
+
+        // Afficher un rapport avec le nombre d'offres
         if (reportSection) {
-          reportSection.style.display = "block"; // Afficher la section de rapport
+          reportSection.style.display = "block";
           reportContent.innerHTML = `
               <h3>Rapport</h3>
               <ul>
-                <li><strong>Nombre d'offres chargées:</strong> ${data.resultats.length}</li>
-                <li><strong>Premier poste:</strong> ${data.resultats[0].intitule}</li>
+                <li><strong>Nombre d'offres chargées :</strong> ${data.offres.length}</li>
               </ul>
             `;
         }
       } else {
+        console.log("Aucune offre trouvée");
         if (jobList) {
           jobList.innerHTML = "<p>Aucune offre trouvée.</p>";
         }
       }
     } catch (error) {
-      // En cas d'erreur, afficher un message et logguer l'erreur
-      console.error("Erreur:", error);
+      console.error("Erreur lors du chargement des offres : ", error);
       if (jobList) {
-        jobList.innerHTML = "<p>Erreur lors du chargement des offres.</p>";
+        jobList.innerHTML = `<p>Erreur lors du chargement des offres. Détails : ${error.message}</p>`;
+      }
+      if (loadingMessage) {
+        loadingMessage.style.display = "none";
       }
     }
   }
 
-  // Fonction pour ouvrir le pop-up avec le contenu de l'offre
+  // Fonction pour afficher le pop-up avec les détails de l'offre
   function openJobPopup(job) {
+    const jobPopup = document.getElementById("job-popup");
+    const jobPopupContent = document.getElementById("job-popup-content");
+
     if (jobPopup && jobPopupContent) {
-      jobPopup.style.display = "block"; // Afficher le pop-up
+      jobPopup.style.display = "block";
       jobPopupContent.innerHTML = `
-          <h2>${job.intitule}</h2>
-          <p><strong>Description:</strong> ${job.description}</p>
-          <p><strong>Lieu:</strong> ${job.lieuTravail.libelle}</p>
-          <p><strong>Type de contrat:</strong> ${job.typeContratLibelle}</p>
+          <h2>${job.mission}</h2>
+          <p><strong>Description :</strong> ${job.description}</p>
+          <p><strong>Profil :</strong> ${job.profil}</p>
+          <p><strong>Expérience :</strong> ${job.experience}</p>
+          <p><strong>Savoir-faire :</strong> ${job.savoirFaire}</p>
+          <p><strong>Type de contrat :</strong> ${job.typeContrat}</p>
+          <p><strong>Rémunération :</strong> ${job.remuneration}</p>
+          <p><strong>Lieu de travail :</strong> ${job.lieuTravail}</p>
+          <p><strong>Expérience Libellé :</strong> ${job.experienceLibelle}</p>
+          <p><strong>Compétences :</strong> ${job.competences}</p>
+          <p><strong>Salaire :</strong> ${job.salaire}</p>
+          <p><strong>Durée de travail Libellé :</strong> ${job.dureeTravailLibelle}</p>
+          <p><strong>Durée de travail Convertie :</strong> ${job.dureeTravailLibelleConverti}</p>
         `;
     }
   }
 
-  // Ajouter un écouteur d'événements pour le bouton de chargement des offres
+  // Clic sur le bouton de chargement des offres
   if (loadJobsButton) {
     loadJobsButton.addEventListener("click", loadJobs);
   }
 
-  // Fermer le pop-up lorsque l'utilisateur clique sur le bouton de fermeture
+  // Fermer le pop-up en cliquant sur le bouton de fermeture
+  const jobPopupClose = document.getElementById("job-popup-close");
   if (jobPopupClose) {
     jobPopupClose.addEventListener("click", () => {
+      const jobPopup = document.getElementById("job-popup");
       if (jobPopup) {
-        jobPopup.style.display = "none"; // Cacher le pop-up
+        jobPopup.style.display = "none";
       }
     });
   }
