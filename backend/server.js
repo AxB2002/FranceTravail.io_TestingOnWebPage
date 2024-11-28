@@ -73,7 +73,7 @@ app.get("/api/recherche", async (req, res) => {
   }
 });
 
-// Démarrage du serveur
+// Démarrage du serveur local
 app.listen(port, () => {
   console.log(
     `Le serveur est en cours d'exécution sur http://localhost:${port}`
