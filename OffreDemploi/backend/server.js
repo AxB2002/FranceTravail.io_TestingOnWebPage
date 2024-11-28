@@ -14,7 +14,7 @@ const PORT = 3000;
 
 const API_URL =
   "https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search";
-const API_TOKEN = "tPOAmLO17V2o4fJqfRT2oEKnPn4"; // Remplacer par votre token valide
+const API_TOKEN = "EWUHGHX_dd0_AeRCTsDmmMJRi04"; // Remplacer par votre token valide
 
 // Middleware pour limiter les appels à l'API
 const limiter = rateLimit({
