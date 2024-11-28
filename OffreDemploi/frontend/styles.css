@@ -37,7 +37,7 @@ h1 {
     font-weight: 500;
     margin: 1rem 0;
     text-align: center;
-    background: WHITE;
+    background: white;
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -64,7 +64,7 @@ main {
     gap: 1.5rem;
 }
 
-/* Individual job item */
+/* Job item styles */
 .job-item {
     border: 1px solid #444;
     padding: 1.5rem;
@@ -74,6 +74,7 @@ main {
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+/* Job item hover effect */
 .job-item:hover {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     transform: translateY(-5px);
@@ -93,6 +94,59 @@ main {
     margin: 0.5rem 0;
     color: #b0b0b0;
     line-height: 1.5;
+}
+
+/* Button for loading jobs */
+#load-jobs {
+    padding: 12px 30px;
+    font-size: 1rem;
+    border: none;
+    background: linear-gradient(135deg, #00e5ff, #00bcd4);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+}
+
+/* Button hover effect */
+#load-jobs:hover {
+    background: linear-gradient(135deg, #00bcd4, #00e5ff);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Report section styles */
+#report-section {
+    margin-top: 2rem;
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    display: none;
+    /* Hidden by default */
+}
+
+/* Report title */
+#report-section h3 {
+    font-size: 1.8rem;
+    color: #00e5ff;
+    margin-bottom: 1rem;
+}
+
+/* Report content styles */
+#report-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#report-content li {
+    margin: 10px 0;
+    font-size: 1rem;
 }
 
 /* Footer styles */
@@ -125,5 +179,10 @@ footer {
 
     .job-item p {
         font-size: 0.9rem;
+    }
+
+    #load-jobs {
+        width: auto;
+        padding: 10px 20px;
     }
 }
