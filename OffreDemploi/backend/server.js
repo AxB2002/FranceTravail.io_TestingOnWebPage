@@ -13,7 +13,7 @@ const PORT = 3000;
 
 const API_URL =
   "https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search";
-const API_TOKEN = "cWpNrOpSvwjHvqwS_Ogqoq7JsF8";
+const API_TOKEN = "OkN6kY14HD9Uj-YpxHjwbgD68ck";
 
 // Middleware
 app.use(cors());
