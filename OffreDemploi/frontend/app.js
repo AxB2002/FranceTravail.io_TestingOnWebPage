@@ -10,41 +10,51 @@ async function loadJobs() {
     // Afficher un message de chargement
     jobList.innerHTML = "<p>Chargement des offres...</p>";
 
-    // Envoyer une requête fetch à l'API pour récupérer les offres
-    const response = await fetch("https://api.example.com/jobs"); // Remplacez par l'URL réelle de l'API
-    const data = await response.json();
+    // Envoyer une requête fetch à votre serveur backend
+    const response = await fetch("/api/offres");
 
-    if (data && data.length > 0) {
+    // Vérification de la réponse du serveur
+    console.log("Réponse du serveur:", response.status);
+
+    if (!response.ok) {
+      throw new Error("Erreur lors de la récupération des données");
+    }
+
+    const data = await response.json();
+    console.log("Données reçues du serveur:", data);
+
+    if (data && data.resultats && data.resultats.length > 0) {
       // Vider la liste avant d'afficher les offres
       jobList.innerHTML = "";
 
       // Créer et afficher les offres d'emploi
-      data.forEach((job) => {
+      data.resultats.forEach((job) => {
         const jobItem = document.createElement("div");
         jobItem.classList.add("job-item");
 
         jobItem.innerHTML = `
-                    <h2>${job.title}</h2>
-                    <p>${job.description}</p>
-                    <p><strong>Lieu:</strong> ${job.location}</p>
-                `;
+          <h2>${job.intitule}</h2>
+          <p>${job.description}</p>
+          <p><strong>Lieu:</strong> ${job.lieuTravail.libelle}</p>
+          <p><strong>Type de contrat:</strong> ${job.typeContratLibelle}</p>
+        `;
         jobList.appendChild(jobItem);
       });
 
       // Créer un rapport avec le nombre d'offres chargées
       reportSection.style.display = "block"; // Afficher la section de rapport
       reportContent.innerHTML = `
-                <h3>Rapport</h3>
-                <ul>
-                    <li><strong>Nombre d'offres chargées:</strong> ${data.length}</li>
-                    <li><strong>Premier poste:</strong> ${data[0].title}</li>
-                </ul>
-            `;
+        <h3>Rapport</h3>
+        <ul>
+          <li><strong>Nombre d'offres chargées:</strong> ${data.resultats.length}</li>
+          <li><strong>Premier poste:</strong> ${data.resultats[0].intitule}</li>
+        </ul>
+      `;
     } else {
       jobList.innerHTML = "<p>Aucune offre trouvée.</p>";
     }
   } catch (error) {
-    // Gestion des erreurs en cas de problème avec la requête
+    // En cas d'erreur, afficher un message et logguer l'erreur
     jobList.innerHTML = "<p>Erreur lors du chargement des offres.</p>";
     console.error("Erreur:", error);
   }
